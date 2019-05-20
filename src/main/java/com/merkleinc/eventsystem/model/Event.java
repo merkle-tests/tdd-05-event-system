@@ -10,12 +10,15 @@ public class Event {
     private final String engineerId;
     private final String visitNumber;
 
+
     private Date eta;
     private int estimatedTime;
 
     private String completeStatus;
     private String completeDescription;
     private String notDoneReason;
+
+    private String organisation;
 
     public Event(String id, String type, Date eventTime, String engineerId, String visitNumber) {
         this.id = id;
@@ -79,6 +82,14 @@ public class Event {
 
     public void setNotDoneReason(String notDoneReason) {
         this.notDoneReason = notDoneReason;
+    }
+
+    public String getOrganisation() {
+        return organisation;
+    }
+
+    public void setOrganisation(String organisation) {
+        this.organisation = organisation;
     }
 
     public boolean isAccept() {

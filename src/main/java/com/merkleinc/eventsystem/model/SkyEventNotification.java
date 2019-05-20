@@ -3,7 +3,7 @@ package com.merkleinc.eventsystem.model;
 import java.util.Date;
 import java.util.Objects;
 
-public class SkyEventNotification  {
+public class SkyEventNotification {
 
     private String type;
     private Date eventTime;
@@ -16,6 +16,8 @@ public class SkyEventNotification  {
     private String completionStatus;
     private String completionDescription;
     private String notDoneReason;
+
+    private String engineerType;
 
     public String getType() {
         return type;
@@ -89,6 +91,14 @@ public class SkyEventNotification  {
         this.notDoneReason = notDoneReason;
     }
 
+    public String getEngineerType() {
+        return engineerType;
+    }
+
+    public void setEngineerType(String engineerType) {
+        this.engineerType = engineerType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -106,11 +116,12 @@ public class SkyEventNotification  {
                 Objects.equals(estimatedTime, that.estimatedTime) &&
                 Objects.equals(completionStatus, that.completionStatus) &&
                 Objects.equals(completionDescription, that.completionDescription) &&
-                Objects.equals(notDoneReason, that.notDoneReason);
+                Objects.equals(notDoneReason, that.notDoneReason) &&
+                Objects.equals(engineerType, that.engineerType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, eventTime, engineerId, visitNumber, travelTime, estimatedTime, completionStatus, completionDescription, notDoneReason);
+        return Objects.hash(type, eventTime, engineerId, visitNumber, travelTime, estimatedTime, completionStatus, completionDescription, notDoneReason, engineerType);
     }
 }

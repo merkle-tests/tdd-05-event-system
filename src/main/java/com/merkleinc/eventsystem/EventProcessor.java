@@ -4,30 +4,39 @@ import java.util.Date;
 import java.util.List;
 import com.merkleinc.eventsystem.eventService.EventService;
 import com.merkleinc.eventsystem.model.Event;
-import com.merkleinc.eventsystem.processor.EventAcceptProcessor;
-import com.merkleinc.eventsystem.processor.EventCompleteProcessor;
-import com.merkleinc.eventsystem.processor.EventNotDoneProcessor;
-import com.merkleinc.eventsystem.processor.EventRouteProcessor;
-import com.merkleinc.eventsystem.processor.EventStartProcessor;
 import com.merkleinc.eventsystem.processor.EventTypeProcessor;
 
 public class EventProcessor {
 
     private final EventService eventService;
-    private final EventTypeProcessor acceptProcessor;
-    private final EventTypeProcessor routeProcessor;
-    private final EventTypeProcessor startProcessor;
-    private final EventTypeProcessor completeProcessor;
-    private final EventTypeProcessor notDoneProcessor;
+    private EventTypeProcessor acceptProcessor;
+    private EventTypeProcessor routeProcessor;
+    private EventTypeProcessor startProcessor;
+    private EventTypeProcessor completeProcessor;
+    private EventTypeProcessor notDoneProcessor;
 
-    public EventProcessor(EventService eventService,
-                          SkyEventNotifier skyEventNotifier) {
+    public EventProcessor(EventService eventService) {
         this.eventService = eventService;
-        this.acceptProcessor = new EventAcceptProcessor(skyEventNotifier);
-        this.routeProcessor = new EventRouteProcessor(skyEventNotifier);
-        this.startProcessor = new EventStartProcessor(skyEventNotifier);
-        this.completeProcessor = new EventCompleteProcessor(skyEventNotifier);
-        this.notDoneProcessor = new EventNotDoneProcessor(skyEventNotifier);
+    }
+
+    public void setAcceptProcessor(EventTypeProcessor acceptProcessor) {
+        this.acceptProcessor = acceptProcessor;
+    }
+
+    public void setRouteProcessor(EventTypeProcessor routeProcessor) {
+        this.routeProcessor = routeProcessor;
+    }
+
+    public void setStartProcessor(EventTypeProcessor startProcessor) {
+        this.startProcessor = startProcessor;
+    }
+
+    public void setCompleteProcessor(EventTypeProcessor completeProcessor) {
+        this.completeProcessor = completeProcessor;
+    }
+
+    public void setNotDoneProcessor(EventTypeProcessor notDoneProcessor) {
+        this.notDoneProcessor = notDoneProcessor;
     }
 
     public void process() {

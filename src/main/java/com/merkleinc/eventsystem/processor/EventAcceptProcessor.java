@@ -24,9 +24,6 @@ public class EventAcceptProcessor implements EventTypeProcessor {
             notification.setVisitNumber(event.getVisitNumber());
 
             skyEventNotifier.sendNotification(notification);
-
-            // TODO fer que el acccept retorni el visitNumber, i caldra
-            // TODO guardarlo al event service per a tenirlo pels seguents events
         }
     }
 }
